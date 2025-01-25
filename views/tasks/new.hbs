@@ -1,0 +1,28 @@
+<h1>Crear Tarea</h1>
+<form action="/tasks" method="POST">
+  <div>
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" required />
+  </div>
+  <div>
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description"></textarea>
+  </div>
+  <div>
+    <label for="projectId">Proyecto:</label>
+    <select id="projectId" name="projectId">
+      {{#each projects}}
+      <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <div>
+    <label for="userId">Asignada a:</label>
+    <select id="userId" name="userId">
+      {{#each users}}
+      <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit">Crear</button>
+</form>

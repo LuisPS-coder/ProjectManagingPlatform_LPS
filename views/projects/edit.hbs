@@ -1,0 +1,13 @@
+<h1>Editar Proyecto</h1>
+<form action="/projects/{{project.id}}" method="POST">
+  <input type="text" name="name" value="{{project.name}}" required />
+  <textarea name="description">{{project.description}}</textarea>
+  <select name="userIds" multiple>
+    {{#each users}}
+    <option value="{{this.id}}" {{#if (contains ../project.users this.id)}}selected{{/if}}>
+      {{this.name}}
+    </option>
+    {{/each}}
+  </select>
+  <button type="submit">Actualizar</button>
+</form>

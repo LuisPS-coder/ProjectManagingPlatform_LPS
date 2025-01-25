@@ -1,0 +1,14 @@
+<h1>Proyectos</h1>
+<a href="/projects/new">Crear nuevo proyecto</a>
+<ul>
+  {{#each projects}}
+  <li>
+    <strong>{{this.name}}</strong> - {{this.description}}
+    <a href="/projects/{{this.id}}/edit">Editar</a>
+    <form action="/projects/{{this.id}}" method="POST" style="display:inline;">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit">Eliminar</button>
+    </form>
+  </li>
+  {{/each}}
+</ul>

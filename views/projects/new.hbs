@@ -1,0 +1,11 @@
+<h1>Crear Proyecto</h1>
+<form action="/projects" method="POST">
+  <input type="text" name="name" placeholder="Nombre del Proyecto" required />
+  <textarea name="description" placeholder="Descripción"></textarea>
+  <select name="userIds" multiple>
+    {{#each users}}
+    <option value="{{this.id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <button type="submit">Crear</button>
+</form>

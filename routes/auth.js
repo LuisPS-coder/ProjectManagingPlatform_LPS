@@ -2,8 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 const passport = require("passport");
-const prisma = require("../prisma");
-
+const prisma = require("../config/prismaClient");
 /**
  * @swagger
  * /auth/register:
@@ -98,6 +97,9 @@ router.post(
  *         description: Returns the login page.
  */
 router.get("/login-page", (req, res) => {
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    return res.redirect("/");
+  }
   res.render("login", { error: req.flash("error") });
 });
 
@@ -112,6 +114,9 @@ router.get("/login-page", (req, res) => {
  *         description: Returns the registration page.
  */
 router.get("/register-page", (req, res) => {
+  if (req.isAuthenticated && req.isAuthenticated()) {
+    return res.redirect("/");
+  }
   res.render("register", { error: req.flash("error") });
 });
 

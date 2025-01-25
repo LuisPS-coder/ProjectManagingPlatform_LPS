@@ -1,0 +1,16 @@
+<h1>Tareas</h1>
+<a href="/tasks/new">Crear nueva tarea</a>
+<ul>
+  {{#each tasks}}
+  <li>
+    <strong>{{this.title}}</strong> - {{this.description}}
+    <br>
+    Proyecto: {{this.project.name}} | Asignada a: {{this.assignedTo.name}}
+    <a href="/tasks/{{this.id}}/edit">Editar</a>
+    <form action="/tasks/{{this.id}}" method="POST" style="display:inline;">
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit">Eliminar</button>
+    </form>
+  </li>
+  {{/each}}
+</ul>

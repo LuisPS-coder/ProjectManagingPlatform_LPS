@@ -1,0 +1,21 @@
+<h1>Bienvenido, {{user.name}}</h1>
+
+{{#if (eq role "ADMIN")}}
+<h2>Gestión Administrativa</h2>
+<ul>
+  <li><a href="/users">Gestionar Usuarios</a></li>
+  <li><a href="/projects">Gestionar Proyectos</a></li>
+</ul>
+{{/if}}
+
+<h2>Mis Proyectos</h2>
+<ul>
+  {{#each projects}}
+  <li>
+    <strong>{{this.name}}</strong> - {{this.description}}
+    <br>
+    Tareas: {{this.tasks.length}} | Usuarios: {{this.users.length}}
+    <a href="/projects/{{this.id}}">Ver Detalles</a>
+  </li>
+  {{/each}}
+</ul>

@@ -1,8 +1,9 @@
 function isAuthenticated(req, res, next) {
-  if (req.user) {
+  if (req.isAuthenticated && req.isAuthenticated()) {
     return next();
   }
 
+  req.flash("error", "Debes iniciar sesión para acceder a esta página.");
   res.redirect("/auth/login-page");
 }
 

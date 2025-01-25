@@ -1,0 +1,39 @@
+<h1>Editar Tarea</h1>
+<form action="/tasks/{{task.id}}" method="POST">
+  <div>
+    <label for="title">Título:</label>
+    <input type="text" id="title" name="title" value="{{task.title}}" required />
+  </div>
+  <div>
+    <label for="description">Descripción:</label>
+    <textarea id="description" name="description">{{task.description}}</textarea>
+  </div>
+  <div>
+    <label for="completed">Completada:</label>
+    <select id="completed" name="completed">
+      <option value="false" {{#unless task.completed}}selected{{/unless}}>No</option>
+      <option value="true" {{#if task.completed}}selected{{/if}}>Sí</option>
+    </select>
+  </div>
+  <div>
+    <label for="projectId">Proyecto:</label>
+    <select id="projectId" name="projectId">
+      {{#each projects}}
+      <option value="{{this.id}}" {{#if (eq this.id ../task.project.id)}}selected{{/if}}>
+        {{this.name}}
+      </option>
+      {{/each}}
+    </select>
+  </div>
+  <div>
+    <label for="userId">Asignada a:</label>
+    <select id="userId" name="userId">
+      {{#each users}}
+      <option value="{{this.id}}" {{#if (eq this.id ../task.assignedTo.id)}}selected{{/if}}>
+        {{this.name}}
+      </option>
+      {{/each}}
+    </select>
+  </div>
+  <button type="submit">Actualizar</button>
+</form>

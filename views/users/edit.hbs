@@ -1,0 +1,10 @@
+<h1>Editar Usuario</h1>
+<form action="/users/{{user.id}}" method="POST">
+  <input type="text" name="name" value="{{user.name}}" required />
+  <input type="email" name="email" value="{{user.email}}" required />
+  <select name="role">
+    <option value="USER" {{#if (eq user.role "USER")}}selected{{/if}}>USER</option>
+    <option value="ADMIN" {{#if (eq user.role "ADMIN")}}selected{{/if}}>ADMIN</option>
+  </select>
+  <button type="submit">Actualizar</button>
+</form>

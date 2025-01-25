@@ -11,6 +11,12 @@ const passport = require('passport');
 const pgSession = require('connect-pg-simple')(session);
 const { Pool } = require('pg');
 
+const indexRouter = require('./routes/index');
+const taskRoutes = require('./routes/taskRoutes');
+const userRoutes = require('./routes/userRoutes');
+const projectRoutes = require('./routes/projectRoutes');
+
+
 const swaggerDocs = require('./config/swagger').swaggerDocs;
 const swaggerUi = require('./config/swagger').swaggerUi;
 
@@ -26,8 +32,6 @@ require('dotenv').config();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
-
-const indexRouter = require('./routes/index');
 
 const app = express();
 
@@ -67,6 +71,9 @@ require('./config/cloudinary');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use('/', indexRouter);
+app.use('/tasks', taskRoutes);
+app.use('/users', userRoutes);
+app.use('/projects', projectRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

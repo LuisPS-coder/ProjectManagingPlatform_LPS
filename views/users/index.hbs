@@ -1,0 +1,11 @@
+<h1>Crear Usuario</h1>
+<form action="/users" method="POST">
+  <input type="text" name="name" placeholder="Nombre" required />
+  <input type="email" name="email" placeholder="Correo" required />
+  <input type="password" name="password" placeholder="Contraseña" required />
+  <select name="role">
+    <option value="USER">USER</option>
+    <option value="ADMIN">ADMIN</option>
+  </select>
+  <button type="submit">Crear</button>
+</form>

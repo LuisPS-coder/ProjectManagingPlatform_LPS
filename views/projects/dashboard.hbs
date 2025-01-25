@@ -1,0 +1,33 @@
+<h1>{{project.name}}</h1>
+<p>{{project.description}}</p>
+
+<h2>Usuarios Asignados</h2>
+<ul>
+  {{#each project.users}}
+  <li>{{this.name}} ({{this.email}})</li>
+  {{/each}}
+</ul>
+
+<h2>Tareas</h2>
+<ul>
+  {{#each project.tasks}}
+  <li>
+    <strong>{{this.title}}</strong> - {{this.description}}
+    <br>
+    Completada: {{#if this.completed}}Sí{{else}}No{{/if}}
+    {{#if this.assignedTo}}
+    <br>
+    Asignada a: {{this.assignedTo.name}}
+    {{/if}}
+    <a href="/tasks/{{this.id}}/edit">Editar</a>
+  </li>
+  {{/each}}
+</ul>
+
+<ul>
+    <li>
+        <a href="/tasks/new?projectId={{project.id}}">Crear nueva tarea</a>
+    </li>
+</ul>
+
+<a href="/projects">Volver a Proyectos</a>

@@ -2,9 +2,19 @@
 <html>
   <head>
     <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    {{{body}}}
+    <nav>
+      <ul>
+        <li><a href="/" class="{{#if (eq currentRoute '/') }}active{{/if}}">Inicio</a></li>
+        <li><a href="/users" class="{{#if (eq currentRoute '/users') }}active{{/if}}">Usuarios</a></li>
+        <li><a href="/projects" class="{{#if (eq currentRoute '/projects') }}active{{/if}}">Proyectos</a></li>
+        <li><a href="/tasks" class="{{#if (eq currentRoute '/tasks') }}active{{/if}}">Tareas</a></li>
+      </ul>
+    </nav>
+    <main>
+      {{{body}}}
+    </main>
   </body>
 </html>

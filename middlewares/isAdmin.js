@@ -1,9 +1,10 @@
 function isAdmin(req, res, next) {
-  if (req.user.role === 'ADMIN') {
+  if (req.user && req.user.role === 'ADMIN') {
     return next();
   }
 
-  res.redirect('/');
+  res.status(403).send('Acceso denegado. No tienes permisos de administrador.');
 }
 
 module.exports = isAdmin;
+
