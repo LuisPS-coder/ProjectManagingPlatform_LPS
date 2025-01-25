@@ -42,6 +42,7 @@ router.post("/register", async (req, res) => {
         password: hashedPassword,
       },
     });
+    console.log('new user created')
     res.redirect("/auth/login-page");
   } catch (error) {
     console.log(error);
